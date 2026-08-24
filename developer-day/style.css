@@ -1,0 +1,173 @@
+* {
+  font-family: "Inter", sans-serif;
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+html {
+  background: #f7f9fc;
+}
+
+body {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.card {
+  width: 90%;
+  max-width: 500px;
+  background: white;
+  padding: 1.5rem;
+  border-radius: 0.5rem;
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+}
+
+.card > * + * {
+  margin-top: 1rem;
+}
+
+.title h1 {
+  font-size: 1.75rem;
+  text-transform: uppercase;
+  font-weight: 600;
+  letter-spacing: 0.125rem;
+}
+
+.title p {
+  font-size: 0.85rem;
+  color: gray;
+  margin-top: 0.5rem;
+}
+
+.goal {
+  font-size: 0.85rem;
+}
+
+.goal > p {
+  font-weight: 600;
+}
+
+.goal-item {
+  margin-top: 0.5rem;
+  padding: 0.75rem 1rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #eff6fd;
+  border: 1px solid #d6e2f8;
+  border-radius: 0.5rem;
+  font-weight: 600;
+}
+
+.progress {
+  font-size: 0.85rem;
+}
+
+.progress > p {
+  font-weight: 600;
+}
+
+.progress-item {
+  display: flex;
+  gap: 1rem;
+}
+
+.progress-bar-placeholder {
+  margin-top: 0.5rem;
+  flex: 1;
+  position: relative;
+  background: #ecf0f7;
+  height: 0.85rem;
+  border-radius: 1rem;
+}
+
+.progress-bar {
+  position: absolute;
+  background: #276fe4;
+  height: 0.85rem;
+  border-radius: 1rem;
+  top: 0;
+  left: 0;
+  width: 75%;
+}
+
+.focus {
+  font-size: 0.85rem;
+}
+
+.focus > p {
+  font-weight: 600;
+}
+
+.focus-items {
+  margin-top: 0.5rem;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+}
+
+.focus-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid #e3e6ee;
+  padding: 1rem;
+  font-weight: 600;
+}
+
+.focus-item:first-child {
+  border-top-left-radius: 0.5rem;
+  border-bottom-left-radius: 0.5rem;
+}
+
+.focus-item:last-child {
+  border-top-right-radius: 0.5rem;
+  border-bottom-right-radius: 0.5rem;
+}
+
+.focus-item > span {
+  color: #37a069;
+  font-size: 1.5rem;
+}
+
+.btn {
+  width: 100%;
+  padding: 0.75rem 1rem;
+  background: #2870e3;
+  color: white;
+  border: none;
+  border-radius: 0.5rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all ease-in 0.25s;
+}
+
+.btn:hover {
+  transform: scale(1.025);
+}
+
+.footer {
+  font-size: 0.85rem;
+  color: gray;
+}
+
+@media (max-width: 500px) {
+  .focus-items {
+    grid-template-columns: 1fr;
+  }
+
+  .focus-item:first-child {
+    border-top-left-radius: 0.5rem;
+    border-top-right-radius: 0.5rem;
+    border-bottom-left-radius: 0rem;
+  }
+
+  .focus-item:last-child {
+    border-top-right-radius: 0rem;
+    border-bottom-left-radius: 0.5rem;
+    border-bottom-right-radius: 0.5rem;
+  }
+}
