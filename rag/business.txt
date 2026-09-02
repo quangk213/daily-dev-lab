@@ -1,0 +1,10 @@
+Đơn hàng trên 5000000đ phải được quản lý duyệt trước khi xuất kho.
+Khách hàng có công nợ quá hạn trên 30 ngày không được tạo thêm đơn mua chịu.
+Một sản phẩm chỉ được áp dụng tối đa một chương trình giảm giá tại cùng một thời điểm.
+Đơn COD chỉ được đánh dấu hoàn tất sau khi đơn vị vận chuyển xác nhận đã thu tiền.
+Nhân viên kho không được tự duyệt phiếu xuất kho do chính mình tạo.
+Nếu tồn kho cửa hàng thấp hơn mức tối thiểu, hệ thống phải tạo cảnh báo cần bổ sung hàng.
+Khách VIP được giảm 5% cho đơn hàng từ 2000.000đ trở lên.
+Một đơn giao hàng được thử giao tối đa 3 lần trước khi chuyển sang trạng thái giao thất bại.
+Đơn hàng đã xuất hóa đơn không được xóa; chỉ được hủy theo quy trình điều chỉnh/hủy hóa đơn.
+Nếu khách trả hàng sau 7 ngày kể từ ngày nhận hàng thì yêu cầu đổi trả phải được quản lý phê duyệt.
