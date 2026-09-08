@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>Target window</title>
+
+    <style>
+      body {
+        width: 300px;
+        padding: 16px;
+        font:
+          14px/1.5 system-ui,
+          sans-serif;
+      }
+
+      label {
+        display: block;
+        margin: 14px 0;
+      }
+
+      button {
+        padding: 8px 12px;
+        cursor: pointer;
+      }
+    </style>
+  </head>
+  <body>
+    <h2>Target window</h2>
+
+    <p>Open this popup in the window that should receive links.</p>
+
+    <label>
+      <input id="focus" type="checkbox" checked />
+      Switch focus when opening a link
+    </label>
+
+    <button id="select">Use this window as target</button>
+
+    <p id="status" role="status"></p>
+
+    <script src="settings.js"></script>
+  </body>
+</html>
