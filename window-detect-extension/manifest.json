@@ -7,8 +7,17 @@
   "background": {
     "service_worker": "background.js"
   },
+  "icons": {
+    "16": "icons/logo.png",
+    "32": "icons/logo.png"
+  },
   "action": {
-    "default_popup": "settings.html"
+    "default_popup": "settings.html",
+    "default_title": "Open in Target Window",
+    "default_icon": {
+      "16": "icons/logo.png",
+      "32": "icons/logo.png"
+    }
   },
   "incognito": "not_allowed",
   "commands": {

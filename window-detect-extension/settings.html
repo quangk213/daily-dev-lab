@@ -2,41 +2,327 @@
 <html lang="en">
   <head>
     <meta charset="utf-8" />
-    <title>Target window</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Open in Target Window</title>
 
     <style>
-      body {
-        width: 300px;
-        padding: 16px;
-        font:
-          14px/1.5 system-ui,
-          sans-serif;
+      :root {
+        color-scheme: light;
+        font-family: "Segoe UI", system-ui, sans-serif;
+        color: #172033;
+        background: #f5f7fb;
       }
 
-      label {
-        display: block;
-        margin: 14px 0;
+      * {
+        box-sizing: border-box;
+      }
+
+      body {
+        width: 360px;
+        margin: 0;
+        padding: 24px;
+        font-size: 13px;
+        line-height: 1.5;
+      }
+
+      button,
+      input {
+        font: inherit;
+      }
+
+      .header {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        margin-bottom: 24px;
+      }
+
+      .logo {
+        display: grid;
+        place-items: center;
+        width: 44px;
+        height: 44px;
+        flex-shrink: 0;
+        border: 1px solid #dce5ff;
+        border-radius: 14px;
+        background: #eaf0ff;
+        color: #3563e9;
+      }
+
+      h1 {
+        margin: 0;
+        font-size: 17px;
+        font-weight: 650;
+        letter-spacing: -0.4px;
+      }
+
+      .subtitle {
+        margin: 2px 0 0;
+        color: #727d90;
+        font-size: 12px;
+      }
+
+      .card {
+        overflow: hidden;
+        border: 1px solid #e3e8f0;
+        border-radius: 16px;
+        background: white;
+        box-shadow: 0 4px 16px rgb(23 32 51 / 3%);
+      }
+
+      .destination {
+        padding: 20px;
+      }
+
+      .eyebrow {
+        margin: 0 0 8px;
+        color: #7a8598;
+        font-size: 10px;
+        font-weight: 700;
+        letter-spacing: 1.3px;
+        text-transform: uppercase;
+      }
+
+      h2 {
+        margin: 0 0 6px;
+        font-size: 16px;
+        font-weight: 650;
+        letter-spacing: -0.3px;
+      }
+
+      .description {
+        margin: 0 0 18px;
+        color: #727d90;
+        font-size: 12px;
+        line-height: 1.65;
       }
 
       button {
-        padding: 8px 12px;
         cursor: pointer;
+        transition:
+          background 150ms ease,
+          transform 150ms ease;
+      }
+
+      .primary {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 8px;
+        width: 100%;
+        min-height: 42px;
+        padding: 10px 14px;
+        border: 0;
+        border-radius: 10px;
+        background: #3563e9;
+        color: white;
+        font-weight: 600;
+        box-shadow: 0 3px 8px rgb(53 99 233 / 18%);
+      }
+
+      .primary:hover {
+        background: #2853d1;
+      }
+
+      .primary:active {
+        transform: translateY(1px);
+      }
+
+      .preference {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 16px;
+        padding: 16px 20px;
+        border-top: 1px solid #edf0f5;
+        cursor: pointer;
+      }
+
+      .preference-title {
+        display: block;
+        font-weight: 600;
+      }
+
+      .preference-hint {
+        display: block;
+        margin-top: 2px;
+        color: #8590a2;
+        font-size: 11px;
+      }
+
+      .switch {
+        position: relative;
+        width: 36px;
+        height: 22px;
+        flex-shrink: 0;
+      }
+
+      .switch input {
+        position: absolute;
+        inset: 0;
+        width: 100%;
+        height: 100%;
+        margin: 0;
+        opacity: 0;
+        cursor: pointer;
+        z-index: 1;
+      }
+
+      .track {
+        display: block;
+        width: 100%;
+        height: 100%;
+        border-radius: 20px;
+        background: #dce2eb;
+        transition: background 150ms ease;
+      }
+
+      .track::after {
+        content: "";
+        position: absolute;
+        top: 3px;
+        left: 3px;
+        width: 16px;
+        height: 16px;
+        border-radius: 50%;
+        background: white;
+        box-shadow: 0 1px 3px rgb(0 0 0 / 12%);
+        transition: transform 150ms ease;
+      }
+
+      .switch input:checked + .track {
+        background: #3563e9;
+      }
+
+      .switch input:checked + .track::after {
+        transform: translateX(14px);
+      }
+
+      button:focus-visible,
+      .switch input:focus-visible + .track {
+        outline: 3px solid #9fb7ff;
+        outline-offset: 3px;
+      }
+
+      #status {
+        margin: 12px 0 0;
+        padding: 10px 12px;
+        border: 1px solid #e3e8f0;
+        border-radius: 10px;
+        background: white;
+        font-size: 12px;
+        overflow-wrap: anywhere;
+      }
+
+      #status:empty {
+        display: none;
+      }
+
+      .shortcut {
+        display: flex;
+        align-items: center;
+        gap: 9px;
+        width: 100%;
+        margin-top: 16px;
+        padding: 10px 4px;
+        border: 0;
+        border-radius: 8px;
+        background: transparent;
+        color: #657187;
+        text-align: left;
+        font-size: 12px;
+      }
+
+      .shortcut:hover {
+        background: #eaf0f8;
+        color: #3563e9;
+      }
+
+      .chevron {
+        margin-left: auto;
+      }
+
+      .footer {
+        margin: 14px 0 0;
+        color: #8590a2;
+        font-size: 11px;
+        line-height: 1.7;
+        text-align: center;
+      }
+
+      @media (prefers-reduced-motion: reduce) {
+        *,
+        *::after {
+          transition: none !important;
+        }
       }
     </style>
   </head>
+
   <body>
-    <h2>Target window</h2>
+    <header class="header">
+      <div class="logo" aria-hidden="true">
+        <svg
+          width="26"
+          height="26"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="1.8"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+        >
+          <path d="M8 15H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2v2" />
+          <rect x="9" y="9" width="12" height="12" rx="2" />
+          <path d="M12 15h6m-3-3 3 3-3 3" />
+        </svg>
+      </div>
 
-    <p>Open this popup in the window that should receive links.</p>
+      <div>
+        <h1>Target Window</h1>
+        <p class="subtitle">Your links, in the right place.</p>
+      </div>
+    </header>
 
-    <label>
-      <input id="focus" type="checkbox" checked />
-      Switch focus when opening a link
-    </label>
+    <main>
+      <section class="card" aria-labelledby="destination-title">
+        <div class="destination">
+          <p class="eyebrow">Destination</p>
 
-    <button id="select">Use this window as target</button>
+          <h2 id="destination-title">Send links here</h2>
 
-    <p id="status" role="status"></p>
+          <p class="description">
+            Select this window to receive links you open using the extension.
+          </p>
+
+          <button id="select" class="primary" type="button">
+            Use this window as target
+            <span aria-hidden="true">→</span>
+          </button>
+        </div>
+
+        <label class="preference" for="focus">
+          <span>
+            <span class="preference-title">Switch to destination</span>
+            <span class="preference-hint">
+              Bring the window forward when opening
+            </span>
+          </span>
+
+          <span class="switch">
+            <input id="focus" type="checkbox" checked />
+            <span class="track" aria-hidden="true"></span>
+          </span>
+        </label>
+      </section>
+
+      <p id="status" role="status" aria-live="polite"></p>
+
+      <p class="footer">
+        Right-click a link, or hover over it<br />
+        and use your keyboard shortcut.
+      </p>
+    </main>
 
     <script src="settings.js"></script>
   </body>
